@@ -1,0 +1,402 @@
+[
+  {
+    "timestamp": "2025-07-15T22:37:30.229Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:37:40.233Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:37:50.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:38:00.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:38:10.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:38:20.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:38:30.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:38:40.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:38:50.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:39:00.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:39:10.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:39:20.234Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:39:30.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:39:40.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:39:50.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:40:00.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:40:10.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:40:20.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:40:30.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:40:40.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:40:50.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:41:00.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:41:10.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:41:20.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:41:30.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:41:40.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:41:50.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:42:00.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:42:10.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:42:20.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:42:30.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:42:40.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:42:50.234Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:43:00.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:43:10.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:43:20.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:43:30.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:43:40.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:43:50.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:44:00.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:44:10.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:44:20.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:44:30.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:44:40.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:44:50.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:45:00.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:45:10.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:45:20.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:45:30.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:45:40.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:45:50.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:46:00.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:46:10.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:46:20.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:46:30.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:46:40.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:46:50.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:47:00.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:47:10.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:47:20.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:47:30.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:47:40.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:47:50.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:48:00.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:48:10.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:48:20.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:48:30.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:48:40.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:48:50.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:49:00.235Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:49:10.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:49:20.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:49:30.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:49:40.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:49:50.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:50:00.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:50:10.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:50:20.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:50:30.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:50:40.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:50:50.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:51:00.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:51:10.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:51:20.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:51:30.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:51:40.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:51:50.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:52:00.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:52:10.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:52:20.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:52:30.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:52:40.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:52:50.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:53:00.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:53:10.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:53:20.236Z",
+    "status": 1
+  },
+  {
+    "timestamp": "2025-07-15T22:53:30.236Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:53:40.236Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:53:50.236Z",
+    "status": 0
+  },
+  {
+    "timestamp": "2025-07-15T22:54:00.236Z",
+    "status": 0
+  }
+]
