@@ -1,1 +1,24 @@
-<app-stacked-chart [data]="uptimeData"></app-stacked-chart>
+<!-- <app-stacked-chart [data]="uptimeData"></app-stacked-chart> -->
+ <div class="grid-container">
+  @for (element of gridElements; track element.id) {
+    <div
+      class="grid-item"
+      [style.grid-column-start]="element.x + 1"
+      [style.grid-column-end]="element.x + element.width + 1"
+      [style.grid-row-start]="element.y + 1"
+      [style.grid-row-end]="element.y + element.height + 1"
+    >
+      @switch (element.type) {
+        @case (GridElementType.UPTIME) {
+          <app-stacked-chart [data]="uptimeData"></app-stacked-chart>
+        }
+        @case (GridElementType.PROGRESS) {
+          <app-progress-pie-chart [data]="pieData"></app-progress-pie-chart>
+        }
+        @default {
+          <p>Unknown element type: {{ element.type }}</p>
+        }
+      }
+    </div>
+  }
+ </div>

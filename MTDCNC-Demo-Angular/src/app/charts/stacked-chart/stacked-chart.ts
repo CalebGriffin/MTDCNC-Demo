@@ -1,10 +1,10 @@
-import { Component, input } from '@angular/core';
-import { ChartData, ChartOptions, Tick } from 'chart.js/auto';
-import { BaseChartDirective } from 'ng2-charts';
+import { Component, computed, input, Signal } from '@angular/core';
+import { ChartConfiguration, ChartData, ChartOptions } from 'chart.js/auto';
+import { BaseChart } from "../base-chart/base-chart";
 
 @Component({
   selector: 'app-stacked-chart',
-  imports: [BaseChartDirective],
+  imports: [BaseChart],
   templateUrl: './stacked-chart.html',
   styleUrl: './stacked-chart.css'
 })
@@ -26,7 +26,7 @@ export class StackedChart {
           font: {
             size: 16
           },
-          callback: (value: string | number, index: number, ticks: Tick[]) => {
+          callback: (value: string | number) => {
             return value + '%';
           }
         }
@@ -45,4 +45,9 @@ export class StackedChart {
       }
     },
   };
+  config: Signal<ChartConfiguration<'bar'>> = computed(() => ({
+    type: 'bar',
+    data: this.data(),
+    options: this.options,
+  }));
 }

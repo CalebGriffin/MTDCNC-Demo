@@ -1,0 +1,12 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, minmax(100px, 1fr));
+  max-height: 100vh;
+}
+
+.grid-item {
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
