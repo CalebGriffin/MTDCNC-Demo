@@ -1,8 +1,8 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, minmax(100px, 1fr));
-  max-height: 100vh;
+  grid-template-rows: repeat(8, minmax(1px, 1fr));
+  height: 97vh;
 }
 
 .grid-item {

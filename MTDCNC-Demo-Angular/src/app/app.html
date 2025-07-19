@@ -10,10 +10,13 @@
     >
       @switch (element.type) {
         @case (GridElementType.UPTIME) {
-          <app-stacked-chart [data]="uptimeData"></app-stacked-chart>
+          <app-stacked-chart [data]="castGridElementChartData(element)"></app-stacked-chart>
         }
         @case (GridElementType.PROGRESS) {
-          <app-progress-pie-chart [data]="pieData"></app-progress-pie-chart>
+          <app-progress-pie-chart [data]="castGridElementChartData(element)"></app-progress-pie-chart>
+        }
+        @case (GridElementType.PIE) {
+          <app-pie-chart [data]="castGridElementChartData(element)" [options]="errorChartOptions"></app-pie-chart>
         }
         @default {
           <p>Unknown element type: {{ element.type }}</p>

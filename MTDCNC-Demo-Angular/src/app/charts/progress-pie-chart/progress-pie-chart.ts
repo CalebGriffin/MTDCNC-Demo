@@ -28,11 +28,13 @@ export class ProgressPieChart {
         display: true,
         text:  this.getChartTitle(this.data()),
         font: {
-          size: 56
+          // size: 56
+          size: 28
         },
         position: 'bottom',
         padding: {
-          top: -30,
+          // top: -30,
+          top: -15
         },
       },
       legend: {
