@@ -37,7 +37,7 @@ export class StackedChart {
         display: true,
         text: 'Machine Uptime (Prev Week)',
         font: {
-          size: 36
+          size: 32
         }
       },
       legend: {

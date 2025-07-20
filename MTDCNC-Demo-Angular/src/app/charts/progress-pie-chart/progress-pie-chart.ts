@@ -27,14 +27,15 @@ export class ProgressPieChart {
       title: {
         display: true,
         text:  this.getChartTitle(this.data()),
+        // text: "100%",
         font: {
           // size: 56
-          size: 28
+          size: 22
         },
         position: 'bottom',
         padding: {
           // top: -30,
-          top: -15
+          top: -12
         },
       },
       legend: {
@@ -42,7 +43,7 @@ export class ProgressPieChart {
         labels: {
           boxWidth: 0,
           font: {
-            size: 16,
+            size: 14,
           }
         }
       }

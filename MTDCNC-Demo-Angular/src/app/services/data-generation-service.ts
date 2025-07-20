@@ -31,4 +31,27 @@ export class DataGenerationService {
       ]
     };
   }
+
+  createAverageUptimeData(machineData: MachineData[]): ChartData<'pie'> {
+    const totalUptime = machineData.reduce((sum, machine) => {
+      return sum + machine.dataPoints.filter(dp => dp.status === 1).length;
+    }, 0);
+    const totalDowntime = machineData.reduce((sum, machine) => {
+      return sum + machine.dataPoints.filter(dp => dp.status === 0).length;
+    }, 0);
+
+    const total = totalUptime + totalDowntime;
+    const uptimePercentage = Math.round(totalUptime / total * 100);
+    const downtimePercentage = Math.round(totalDowntime / total * 100);
+
+    return {
+      labels: ['Average Uptime'],
+      datasets: [{
+        data: [uptimePercentage, downtimePercentage],
+        backgroundColor: ['#4CAF50', '#F44336'],
+        hoverBackgroundColor: ['#4CAF50', '#F44336'],
+        borderWidth: 0,
+      }]
+    };
+  }
 }

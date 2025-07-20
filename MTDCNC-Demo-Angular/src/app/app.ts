@@ -3,16 +3,19 @@ import { StackedChart } from './charts/stacked-chart/stacked-chart';
 import { DataGenerationService } from './services/data-generation-service';
 import Machine1 from './static/machine-1.json';
 import Machine2 from './static/machine-2.json';
+import Machine3 from './static/machine-3.json';
+import Machine4 from './static/machine-4.json';
 import { DataPoint } from './types/data-point';
 import { Chart, ChartData, ChartOptions, ChartTypeRegistry } from 'chart.js';
 import { ProgressPieChart } from './charts/progress-pie-chart/progress-pie-chart';
 import { GridElement } from './types/grid-element';
 import { GridElementType } from './types/grid-element-type';
 import { PieChart } from "./charts/pie-chart/pie-chart";
+import { LineChart } from "./charts/line-chart/line-chart";
 
 @Component({
   selector: 'app-root',
-  imports: [StackedChart, ProgressPieChart, PieChart],
+  imports: [StackedChart, ProgressPieChart, PieChart, LineChart],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -24,6 +27,14 @@ export class App {
   uptimeData = this.dataGenService.createStackedChartData([
     { machineName: 'Machine 1', dataPoints: Machine1 as DataPoint[] },
     { machineName: 'Machine 2', dataPoints: Machine2 as DataPoint[] },
+    { machineName: 'Machine 3', dataPoints: Machine3 as DataPoint[] },
+    { machineName: 'Machine 4', dataPoints: Machine4 as DataPoint[] },
+  ]);
+  averageUptimeData = this.dataGenService.createAverageUptimeData([
+    { machineName: 'Machine 1', dataPoints: Machine1 as DataPoint[] },
+    { machineName: 'Machine 2', dataPoints: Machine2 as DataPoint[] },
+    { machineName: 'Machine 3', dataPoints: Machine3 as DataPoint[] },
+    { machineName: 'Machine 4', dataPoints: Machine4 as DataPoint[] },
   ]);
   consumptionData: ChartData<'pie'> = {
     labels: ['Energy Consumption'],
@@ -39,6 +50,7 @@ export class App {
     datasets: [{
       data: [4, 3, 2, 1],
       backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+      hoverOffset: 10,
     }],
   };
   errorChartOptions: ChartOptions<'pie'> = {
@@ -47,7 +59,7 @@ export class App {
         display: true,
         text: 'Downtime Causes',
         font: {
-          size: 36
+          size: 32
         }
       },
       legend: {
@@ -59,6 +71,28 @@ export class App {
         }
       }
     }
+  };
+  prevWeekErrors: ChartData<'line' | 'bar'> = {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Errors',
+        data: [5, 3, 4, 2, 6, 1, 3],
+        backgroundColor: '#F44336',
+      },
+      {
+        type: 'line',
+        label: 'Energy Consumption',
+        data: [6, 4, 9, 5, 7, 6, 8],
+        fill: false,
+        borderColor: '#F5D536',
+        backgroundColor: '#F5D536',
+        tension: 0.2,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+      }
+    ],
   };
 
   gridElements: GridElement[] = [
@@ -81,9 +115,18 @@ export class App {
       height: 2,
     },
     {
+      id: "5",
+      type: GridElementType.PROGRESS,
+      chartData: this.averageUptimeData,
+      x: 6,
+      y: 0,
+      width: 2,
+      height: 2,
+    },
+    {
       id: "3",
-      type: GridElementType.UPTIME,
-      chartData: this.uptimeData,
+      type: GridElementType.LINE,
+      chartData: this.prevWeekErrors,
       x: 4,
       y: 4,
       width: 4,
