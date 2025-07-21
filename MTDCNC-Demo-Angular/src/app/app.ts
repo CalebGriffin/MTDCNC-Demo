@@ -241,6 +241,9 @@ export class App {
         ticks: {
           display: false,
         },
+        border: {
+          display: false,
+        },
       },
       y: {
         stacked: true,
@@ -250,8 +253,45 @@ export class App {
         ticks: {
           display: false,
         },
+        border: {
+          display: false,
+        },
       },
     },
+  };
+
+  detailedTimelineChartData: ChartData<'bar'> = {
+    labels: ['Error', 'Warning', 'In Operation', 'Idle'],
+    datasets: [
+      {
+        label: 'Error Timeline',
+        data: [10, 10, 10, 10],
+        backgroundColor: ['red', 'white', 'white', 'white'],
+        categoryPercentage: 1,
+        barPercentage: 1,
+      },
+      {
+        label: 'Warning Timeline',
+        data: [5, 5, 5, 5],
+        backgroundColor: ['white', 'orange', 'white', 'white'],
+        categoryPercentage: 1,
+        barPercentage: 1,
+      },
+      {
+        label: 'In Operation Timeline',
+        data: [20, 20, 20, 20],
+        backgroundColor: ['white', 'white', 'green', 'white'],
+        categoryPercentage: 1,
+        barPercentage: 1,
+      },
+      {
+        label: 'Idle Timeline',
+        data: [55, 55, 55, 55],
+        backgroundColor: ['white', 'white', 'white', 'grey'],
+        categoryPercentage: 1,
+        barPercentage: 1,
+      },
+    ],
   };
 
   gridElements: Signal<GridElement[]> = computed(() => [
@@ -303,16 +343,26 @@ export class App {
       width: 1,
       height: 1,
     },
+    // {
+    //   id: '10',
+    //   type: GridElementType.BAR,
+    //   chartData: this.timelineChartData,
+    //   chartOptions: this.timelineChartOptions,
+    //   x: 4,
+    //   y: 2,
+    //   width: 4,
+    //   height: 2,
+    // },
     {
-      id: '10',
+      id: '11',
       type: GridElementType.BAR,
-      chartData: this.timelineChartData,
+      chartData: this.detailedTimelineChartData,
       chartOptions: this.timelineChartOptions,
       x: 4,
       y: 2,
       width: 4,
       height: 2,
-    }
+    },
   ]);
 
   errorChart = signal<GridElement>(this.getErrorChart());
@@ -384,9 +434,6 @@ export class App {
   }
 
   nextErrorChart() {
-    console.log('Switching error chart');
-    console.log('Current chart index:', this.errorChartIndex);
-    console.log('Current grid elements:', this.gridElements);
     this.errorChartIndex = (this.errorChartIndex + 1) % 3;
     this.errorChart.set(this.getErrorChart());
   }
