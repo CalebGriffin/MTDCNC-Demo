@@ -1,11 +1,12 @@
 <div class="grid-container">
-  @for (element of gridElements; track element.id) {
+  @for (element of gridElements(); track element.id; let index = $index;) {
     <div
       class="grid-item"
       [style.grid-column-start]="element.x + 1"
       [style.grid-column-end]="element.x + element.width + 1"
       [style.grid-row-start]="element.y + 1"
       [style.grid-row-end]="element.y + element.height + 1"
+      [style.z-index]="index + 1"
     >
       @switch (element.type) {
         @case (GridElementType.UPTIME) {
@@ -15,10 +16,21 @@
           <app-progress-pie-chart [data]="castGridElementChartData(element)"></app-progress-pie-chart>
         }
         @case (GridElementType.PIE) {
-          <app-pie-chart [data]="castGridElementChartData(element)" [options]="errorChartOptions"></app-pie-chart>
+          <app-pie-chart [data]="castGridElementChartData(element)" [options]="castGridElementChartOptions(element)"></app-pie-chart>
         }
         @case (GridElementType.LINE) {
           <app-line-chart [data]="castGridElementChartData(element)"></app-line-chart>
+        }
+        @case (GridElementType.RADAR) {
+          <app-radar-chart [data]="castGridElementChartData(element)" [options]="castGridElementChartOptions(element)"></app-radar-chart>
+        }
+        @case (GridElementType.POLAR) {
+          <app-polar-chart [data]="castGridElementChartData(element)" [options]="castGridElementChartOptions(element)"></app-polar-chart>
+        }
+        @case (GridElementType.BUTTON) {
+          <div style="display: flex; justify-content: center; align-items: start; height: 100%; width: 100%; padding: 5px;">
+            <button (click)="element.callback ? element.callback() : null">{{ element.title ? element.title : element.id }}</button>
+          </div>
         }
         @default {
           <p>Unknown element type: {{ element.type }}</p>

@@ -3,4 +3,7 @@ export enum GridElementType {
   PROGRESS = 'progress',
   PIE = 'pie',
   LINE = 'line',
+  RADAR = 'radar',
+  POLAR = 'polar',
+  BUTTON = 'button',
 };
