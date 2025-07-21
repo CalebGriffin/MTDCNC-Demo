@@ -6,4 +6,5 @@ export enum GridElementType {
   RADAR = 'radar',
   POLAR = 'polar',
   BUTTON = 'button',
+  BAR = 'bar',
 };

@@ -27,6 +27,9 @@
         @case (GridElementType.POLAR) {
           <app-polar-chart [data]="castGridElementChartData(element)" [options]="castGridElementChartOptions(element)"></app-polar-chart>
         }
+        @case (GridElementType.BAR) {
+          <app-bar-chart [data]="castGridElementChartData(element)" [options]="castGridElementChartOptions(element)"></app-bar-chart>
+        }
         @case (GridElementType.BUTTON) {
           <div style="display: flex; justify-content: center; align-items: start; height: 100%; width: 100%; padding: 5px;">
             <button (click)="element.callback ? element.callback() : null">{{ element.title ? element.title : element.id }}</button>
