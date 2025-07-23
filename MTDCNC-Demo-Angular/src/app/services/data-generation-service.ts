@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ChartData, ChartDataset, Color } from 'chart.js';
 import { MachineData } from '../types/machine-data';
-import { ChartData } from 'chart.js';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +53,30 @@ export class DataGenerationService {
         borderWidth: 0,
       }]
     };
+  }
+
+  createDetailedTimelineData(
+    statusTypes: { [label: string]: Color },
+    sequence: { label: string, value: number }[]
+  ): ChartDataset<'bar'>[] {
+    const labels = Object.keys(statusTypes);
+
+    return sequence.map(entry => {
+      const colour = statusTypes[entry.label];
+      if (!colour) throw new Error(`Unknown label: ${entry.label}`);
+
+      const backgroundColour = labels.map(label =>
+        label === entry.label ? colour : 'white'
+      );
+
+      return {
+        label: entry.label,
+        data: Array(labels.length).fill(entry.value),
+        backgroundColor: backgroundColour,
+        hoverBackgroundColor: [undefined],
+        categoryPercentage: 1,
+        barPercentage: 1,
+      };
+    });
   }
 }

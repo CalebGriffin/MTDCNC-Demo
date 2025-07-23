@@ -6,7 +6,7 @@ import Machine2 from './static/machine-2.json';
 import Machine3 from './static/machine-3.json';
 import Machine4 from './static/machine-4.json';
 import { DataPoint } from './types/data-point';
-import { Chart, ChartData, ChartOptions, ChartTypeRegistry } from 'chart.js';
+import { Chart, ChartData, ChartOptions, ChartTypeRegistry, Color } from 'chart.js';
 import { ProgressPieChart } from './charts/progress-pie-chart/progress-pie-chart';
 import { GridElement } from './types/grid-element';
 import { GridElementType } from './types/grid-element-type';
@@ -15,6 +15,7 @@ import { LineChart } from './charts/line-chart/line-chart';
 import { RadarChart } from './charts/radar-chart/radar-chart';
 import { PolarChart } from './charts/polar-chart/polar-chart';
 import { BarChart } from './charts/bar-chart/bar-chart';
+import { merge } from 'chart.js/helpers';
 
 @Component({
   selector: 'app-root',
@@ -260,38 +261,53 @@ export class App {
     },
   };
 
+  detailedTimelineStatusTypes: {[label: string]: Color} = {
+    'Error': 'red',
+    'Warning': 'orange',
+    'In Operation': 'green',
+    'Idle': 'grey',
+  };
+
+  detailedTimelineSequence: { label: string, value: number }[] = [
+    { label: 'Idle', value: 55 },
+    { label: 'In Operation', value: 25 },
+    { label: 'Warning', value: 5 },
+    { label: 'In Operation', value: 25 },
+    { label: 'Error', value: 15 },
+    { label: 'Idle', value: 35 },
+  ];
+
   detailedTimelineChartData: ChartData<'bar'> = {
     labels: ['Error', 'Warning', 'In Operation', 'Idle'],
-    datasets: [
-      {
-        label: 'Error Timeline',
-        data: [10, 10, 10, 10],
-        backgroundColor: ['red', 'white', 'white', 'white'],
-        categoryPercentage: 1,
-        barPercentage: 1,
+    datasets: this.dataGenService.createDetailedTimelineData(
+      this.detailedTimelineStatusTypes,
+      this.detailedTimelineSequence
+    ),
+  };
+
+  detailedTimelineChartOptions: ChartOptions<'bar'> = {
+    plugins: {
+      tooltip: {
+        filter: function(tooltipItem, _index, _tooltipItems, data) {
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const bgColor = dataset?.backgroundColor;
+          if (Array.isArray(bgColor)) {
+            return bgColor[tooltipItem.dataIndex] !== 'white';
+          }
+          return false;
+        }
       },
-      {
-        label: 'Warning Timeline',
-        data: [5, 5, 5, 5],
-        backgroundColor: ['white', 'orange', 'white', 'white'],
-        categoryPercentage: 1,
-        barPercentage: 1,
-      },
-      {
-        label: 'In Operation Timeline',
-        data: [20, 20, 20, 20],
-        backgroundColor: ['white', 'white', 'green', 'white'],
-        categoryPercentage: 1,
-        barPercentage: 1,
-      },
-      {
-        label: 'Idle Timeline',
-        data: [55, 55, 55, 55],
-        backgroundColor: ['white', 'white', 'white', 'grey'],
-        categoryPercentage: 1,
-        barPercentage: 1,
-      },
-    ],
+    },
+    scales: {
+      y: {
+        ticks: {
+          display: true,
+          font: {
+            size: 16
+          }
+        }
+      }
+    }
   };
 
   gridElements: Signal<GridElement[]> = computed(() => [
@@ -357,7 +373,7 @@ export class App {
       id: '11',
       type: GridElementType.BAR,
       chartData: this.detailedTimelineChartData,
-      chartOptions: this.timelineChartOptions,
+      chartOptions: merge({}, [this.timelineChartOptions, this.detailedTimelineChartOptions]),
       x: 4,
       y: 2,
       width: 4,
@@ -403,7 +419,6 @@ export class App {
             },
           ],
         },
-        // chartOptions: this.errorChartOptions,
         chartOptions: {
           ...this.errorChartOptions,
           scales: {
