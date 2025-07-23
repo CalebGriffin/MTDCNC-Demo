@@ -6,7 +6,7 @@ import Machine2 from './static/machine-2.json';
 import Machine3 from './static/machine-3.json';
 import Machine4 from './static/machine-4.json';
 import { DataPoint } from './types/data-point';
-import { Chart, ChartData, ChartOptions, ChartTypeRegistry, Color } from 'chart.js';
+import { Chart, ChartData, ChartOptions, ChartTypeRegistry, Color, LegendItem } from 'chart.js';
 import { ProgressPieChart } from './charts/progress-pie-chart/progress-pie-chart';
 import { GridElement } from './types/grid-element';
 import { GridElementType } from './types/grid-element-type';
@@ -193,34 +193,49 @@ export class App {
   };
 
   errorChartIndex = 0;
+  timelineChartIndex = 0;
 
   timelineChartData: ChartData<'bar'> = {
     // labels: ['Error', 'Warning', 'In Operation', 'Idle'],
     labels: ['Machine Status'],
     datasets: [
       {
-        label: 'Error',
-        data: [10], // 10 units of time
-        backgroundColor: 'red',
-        stack: 'status',
+        label: 'Idle',
+        data: [55],
+        backgroundColor: 'grey',
+        categoryPercentage: 1,
+      },
+      {
+        label: 'In Operation',
+        data: [25],
+        backgroundColor: 'green',
+        categoryPercentage: 1,
       },
       {
         label: 'Warning',
         data: [5],
         backgroundColor: 'orange',
-        stack: 'status',
+        categoryPercentage: 1,
       },
       {
         label: 'In Operation',
-        data: [20],
+        data: [25],
         backgroundColor: 'green',
-        stack: 'status',
+        categoryPercentage: 1,
+        minBarLength: 0,
+      },
+      {
+        label: 'Error',
+        data: [15],
+        backgroundColor: 'red',
+        categoryPercentage: 1,
       },
       {
         label: 'Idle',
-        data: [15],
+        data: [35],
         backgroundColor: 'grey',
-        stack: 'status',
+        categoryPercentage: 1,
+        minBarLength: 0,
       },
     ],
   };
@@ -229,7 +244,13 @@ export class App {
     indexAxis: 'y',
     plugins: {
       legend: {
-        display: false,
+        // display: false,
+        labels: {
+          filter: (item: LegendItem, data: ChartData<'bar'>) => {
+            const labels = data.datasets.map(ds => ds.label);
+            return labels.indexOf(labels[item.datasetIndex!]) === item.datasetIndex;
+          }
+        }
       },
     },
     responsive: true,
@@ -297,6 +318,9 @@ export class App {
           return false;
         }
       },
+      legend: {
+        display: false,
+      }
     },
     scales: {
       y: {
@@ -359,29 +383,22 @@ export class App {
       width: 1,
       height: 1,
     },
-    // {
-    //   id: '10',
-    //   type: GridElementType.BAR,
-    //   chartData: this.timelineChartData,
-    //   chartOptions: this.timelineChartOptions,
-    //   x: 4,
-    //   y: 2,
-    //   width: 4,
-    //   height: 2,
-    // },
+    this.timelineChart(),
     {
-      id: '11',
-      type: GridElementType.BAR,
-      chartData: this.detailedTimelineChartData,
-      chartOptions: merge({}, [this.timelineChartOptions, this.detailedTimelineChartOptions]),
-      x: 4,
+      id: '12',
+      type: GridElementType.BUTTON,
+      chartData: this.timelineChartData,
+      callback: () => this.nextTimelineChart(),
+      title: 'Change Timeline Type',
+      x: 7,
       y: 2,
-      width: 4,
-      height: 2,
-    },
+      width: 1,
+      height: 1,
+    }
   ]);
 
   errorChart = signal<GridElement>(this.getErrorChart());
+  timelineChart = signal<GridElement>(this.getTimelineChart());
 
   castGridElementChartData<T extends keyof ChartTypeRegistry>(
     element: GridElement
@@ -448,8 +465,40 @@ export class App {
     return errorCharts[this.errorChartIndex];
   }
 
+  getTimelineChart() {
+    const timelineCharts: GridElement[] = [
+      {
+        id: '10',
+        type: GridElementType.BAR,
+        chartData: this.timelineChartData,
+        chartOptions: this.timelineChartOptions,
+        x: 4,
+        y: 2,
+        width: 4,
+        height: 2,
+      },
+      {
+        id: '11',
+        type: GridElementType.BAR,
+        chartData: this.detailedTimelineChartData,
+        chartOptions: merge({}, [this.timelineChartOptions, this.detailedTimelineChartOptions]) as ChartOptions<'bar'>,
+        x: 4,
+        y: 2,
+        width: 4,
+        height: 2,
+      },
+    ];
+
+    return timelineCharts[this.timelineChartIndex];
+  }
+
   nextErrorChart() {
     this.errorChartIndex = (this.errorChartIndex + 1) % 3;
     this.errorChart.set(this.getErrorChart());
+  }
+
+  nextTimelineChart() {
+    this.timelineChartIndex = (this.timelineChartIndex + 1) % 2;
+    this.timelineChart.set(this.getTimelineChart());
   }
 }
