@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build -c production --base-href /MTDCNC-Demo/ && npx angular-cli-ghpages --dir=dist/MTDCNC-Demo-Angular/browser"
+    "deploy": "ng build -c production && npx angular-cli-ghpages --dir=dist/MTDCNC-Demo-Angular/browser"
   },
   "prettier": {
     "overrides": [
