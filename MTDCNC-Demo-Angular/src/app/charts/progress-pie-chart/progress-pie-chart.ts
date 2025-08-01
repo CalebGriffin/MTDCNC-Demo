@@ -45,7 +45,8 @@ export class ProgressPieChart {
           font: {
             size: 14,
           }
-        }
+        },
+        onClick: function() {},
       }
     }
   }));

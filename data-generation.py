@@ -93,12 +93,12 @@ def generate_machine_data():
             "statusDefinitions": {i: status for i, status in enumerate(STATUSES)},
             "errorCodes": {
                 0: "No Error",
-                1: "Temperature High",
-                2: "Pressure Low",
-                3: "Motor Fault",
-                4: "Sensor Malfunction",
-                5: "Communication Error",
-                6: "Safety Interlock"
+                1: "Machine Fault",
+                2: "Material Shortage",
+                3: "Operator Error",
+                4: "Maintenance",
+                5: "Material Fault",
+                6: "Power Issue"
             }
         },
         "data": data_points

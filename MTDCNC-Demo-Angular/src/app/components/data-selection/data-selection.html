@@ -1,0 +1,32 @@
+<div style="display: flex; flex-direction: column; padding: 8px; height: 100%; width: 100%;">
+  @for (machine of dataFilterService.filteredMachines(); track $index;) {
+    <div>
+      <input id="Machine {{ $index +  1}}" type="checkbox" [checked]="machine" (change)="dataFilterService.toggleMachineFilter($index)" />
+      <label for="Machine {{ $index + 1 }}"> Machine {{ $index + 1 }}</label>
+    </div>
+  }
+  
+  <div style="margin-top: 8px;">
+    <label for="start-date">Start Date: </label>
+    <input
+      id="start-date"
+      type="datetime-local"
+      [value]="dataFilterService.formattedStartDate()"
+      [min]="dataFilterService.formattedMinStartDate"
+      [max]="dataFilterService.formattedEndDate()"
+      (change)="onDateChange($event, true)"
+    />
+  </div>
+  
+  <div>
+    <label for="end-date">End Date</label>
+    <input
+      id="end-date"
+      type="datetime-local"
+      [value]="dataFilterService.formattedEndDate()"
+      [min]="dataFilterService.formattedStartDate()"
+      [max]="dataFilterService.formattedMaxEndDate"
+      (change)="onDateChange($event, false)"
+    />
+    </div>
+  </div>

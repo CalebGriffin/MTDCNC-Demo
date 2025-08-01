@@ -21,6 +21,7 @@ export class StackedChart {
         }
       },
       y: {
+        max: 100,
         stacked: true,
         ticks: {
           font: {

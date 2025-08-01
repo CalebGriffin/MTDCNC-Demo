@@ -70,7 +70,7 @@ export class BaseChart implements AfterViewInit, OnDestroy {
       }
     }
 
-    this.chart.update();
+    this.chart.update('none');
   }
 
   private setupResizeObserver() {

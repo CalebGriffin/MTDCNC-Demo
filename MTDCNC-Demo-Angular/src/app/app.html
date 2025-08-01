@@ -31,8 +31,22 @@
           <app-bar-chart [data]="castGridElementChartData(element)" [options]="castGridElementChartOptions(element)"></app-bar-chart>
         }
         @case (GridElementType.BUTTON) {
-          <div style="display: flex; justify-content: center; align-items: start; height: 100%; width: 100%; padding: 5px;">
-            <button (click)="element.callback ? element.callback() : null">{{ element.title ? element.title : element.id }}</button>
+          <div style="display: flex; justify-content: right; align-items: start; height: 100%; width: 100%; padding: 0px;">
+            <button (click)="element.callback ? element.callback() : null">
+              @if (!!element.icon) {
+                <i class="fa {{ element.icon }}"></i>
+              } @else {
+                <span>{{ element.title ?? element.id }}</span>
+              }
+            </button>
+          </div>
+        }
+        @case (GridElementType.PANEL) {
+          <div style="background-color: rgba(0, 0, 0, 0.2); height: 100%; width: 100%; border-radius: 4px;"></div>
+        }
+        @case (GridElementType.DIALOG) {
+          <div style="background-color: white; border-radius: 4px;">
+            <ng-container *ngComponentOutlet="element.component ?? null"></ng-container>
           </div>
         }
         @default {
